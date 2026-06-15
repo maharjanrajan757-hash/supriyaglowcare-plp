@@ -1,0 +1,36 @@
+{
+  "name": "supriya-glow-care",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "optimize-images": "node scripts/optimize-images.mjs"
+  },
+  "dependencies": {
+    "googleapis": "^160.0.0",
+    "lucide-react": "^0.468.0",
+    "next": "16.2.9",
+    "nodemailer": "^8.0.11",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.1",
+    "@types/node": "^22.10.5",
+    "@types/nodemailer": "^7.0.4",
+    "@types/react": "^19.0.3",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^9.17.0",
+    "eslint-config-next": "16.2.9",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^5.7.2"
+  },
+  "overrides": {
+    "postcss": "^8.5.10"
+  }
+}

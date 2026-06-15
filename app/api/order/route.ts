@@ -8,12 +8,36 @@ import { getMissingOrderConfiguration } from "@/lib/order-config";
 export const runtime = "nodejs";
 
 function isAllowedOrigin(request: NextRequest) {
-  const allowed = process.env.FRONTEND_URL?.trim();
   const origin = request.headers.get("origin");
-  if (!allowed || !origin) return true;
+  if (!origin) return true;
 
   try {
-    return new URL(origin).origin === new URL(allowed).origin;
+    const requestOrigin = new URL(origin).origin;
+    const allowedOrigins = new Set<string>();
+    const addOrigin = (value?: string) => {
+      if (!value?.trim()) return;
+
+      try {
+        allowedOrigins.add(new URL(value.trim()).origin);
+      } catch {
+        // Ignore malformed optional URLs and continue with trusted request hosts.
+      }
+    };
+
+    addOrigin(request.nextUrl.origin);
+
+    const forwardedHost = request.headers.get("x-forwarded-host") || request.headers.get("host");
+    if (forwardedHost) {
+      const forwardedProtocol = request.headers.get("x-forwarded-proto") || request.nextUrl.protocol.replace(":", "");
+      addOrigin(`${forwardedProtocol}://${forwardedHost}`);
+    }
+
+    process.env.FRONTEND_URL?.split(",").forEach(addOrigin);
+    addOrigin(process.env.NEXT_PUBLIC_SITE_URL);
+    addOrigin(process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`);
+    addOrigin(process.env.VERCEL_URL && `https://${process.env.VERCEL_URL}`);
+
+    return allowedOrigins.has(requestOrigin);
   } catch {
     return false;
   }

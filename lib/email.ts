@@ -24,9 +24,24 @@ function row(label: string, value: string, strong = false) {
   </tr>`;
 }
 
+function websiteSection() {
+  return `<tr><td style="padding:0 28px 32px;text-align:center">
+    <div style="background:#FAF3E0;border:1px solid #E8D5A3;border-radius:16px;padding:18px 20px;color:#685446;font-size:14px;line-height:1.7">
+      <div style="margin-bottom:6px">For more details, visit our website:</div>
+      <a class="website-link" href="https://www.supriyaglowcare.com" target="_blank" rel="noopener noreferrer" style="color:#C9A84C;font-weight:700;text-decoration:underline;text-underline-offset:3px">
+        www.supriyaglowcare.com
+      </a>
+    </div>
+  </td></tr>`;
+}
+
 function emailShell(brand: string, eyebrow: string, headline: string, body: string) {
   return `<!doctype html>
-  <html><body style="margin:0;background:#F5ECD7;font-family:Arial,sans-serif;color:#3D2B1F">
+  <html><head>
+    <style>
+      .website-link:hover { color:#8B5E3C !important; text-decoration:underline !important; }
+    </style>
+  </head><body style="margin:0;background:#F5ECD7;font-family:Arial,sans-serif;color:#3D2B1F">
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#F5ECD7;padding:24px 12px">
       <tr><td align="center">
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:620px;background:#fff;border-radius:20px;overflow:hidden">
@@ -38,6 +53,7 @@ function emailShell(brand: string, eyebrow: string, headline: string, body: stri
             <h1 style="margin:10px 0 0;font-family:Georgia,serif;font-size:32px;line-height:1.2">${headline}</h1>
           </td></tr>
           <tr><td style="padding:20px 28px 36px">${body}</td></tr>
+          ${websiteSection()}
           <tr><td style="padding:22px 28px;background:#FAF3E0;text-align:center;color:#806c5d;font-size:12px">
             ${escapeHtml(brand)} · Cash On Delivery across Nepal
           </td></tr>

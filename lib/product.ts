@@ -57,16 +57,19 @@ export const testimonials = [
     quote: "After just three washes, the breakage had reduced noticeably. By the end of the first month, my hair felt thicker, stronger, and so much more alive.",
     name: "Sujata Thapa",
     meta: "Kathmandu",
+    image: "/images/testimonial-sujata-thapa.webp",
   },
   {
     quote: "After leaving the mask on and rinsing, the smoothness was unreal. No more frizz or rough texture, just soft, shiny, beautiful hair.",
     name: "Rojina Shrestha",
     meta: "Pokhara",
+    image: "/images/testimonial-rojina-shrestha.webp",
   },
   {
     quote: "Within two weeks the itchiness had reduced dramatically, and within a month my scalp felt balanced and my hair looked fuller and healthier.",
     name: "Kalpana Rai",
     meta: "Biratnagar",
+    image: "/images/testimonial-kalpana-rai.webp",
   },
 ];
 

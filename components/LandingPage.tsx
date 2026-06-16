@@ -221,6 +221,16 @@ export function LandingPage() {
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((item) => (
               <figure key={item.name} className="soft-card p-6">
+                <div className="mx-auto mb-5 size-24 overflow-hidden rounded-full border-2 border-[#C9A84C]/60 bg-[#FAF3E0] p-1 shadow-lg shadow-[#8B5E3C]/10">
+                  <Image
+                    src={item.image}
+                    alt={`${item.name} from ${item.meta}`}
+                    width={96}
+                    height={96}
+                    className="size-full rounded-full object-cover"
+                    sizes="96px"
+                  />
+                </div>
                 <div className="flex text-[#C9A84C]">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={16} fill="currentColor" />)}</div>
                 <blockquote className="mt-5 font-display text-xl leading-8">“{item.quote}”</blockquote>
                 <figcaption className="mt-6 border-t hairline pt-4">
